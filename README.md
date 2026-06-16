@@ -105,6 +105,6 @@ Uninstall removes `~/Applications/MacProtectPlus.app`, unregisters the Finder Se
 
 ## DMG Encryption Note
 
-MacProtectPlus uses the system `/usr/bin/hdiutil` command to create a compressed `UDZO` disk image encrypted with AES-256. The generated `.dmg` mounts after the password is entered in Finder.
+MacProtectPlus uses the system `/usr/bin/hdiutil` command to create a compressed HFS+ `UDZO` disk image encrypted with AES-256. The generated `.dmg` mounts after the password is entered in Finder.
 
 The password is supplied to `hdiutil` through stdin rather than as a process argument.

@@ -78,6 +78,8 @@ final class DMGArchiver: @unchecked Sendable {
             "create",
             "-format",
             "UDZO",
+            "-fs",
+            "HFS+",
             "-imagekey",
             "zlib-level=9",
             "-encryption",
@@ -98,7 +100,9 @@ final class DMGArchiver: @unchecked Sendable {
         process.standardError = errorPipe
 
         try process.run()
-        inputPipe.fileHandleForWriting.write(Data((password + "\n").utf8))
+        var passwordData = Data(password.utf8)
+        passwordData.append(0)
+        inputPipe.fileHandleForWriting.write(passwordData)
         try? inputPipe.fileHandleForWriting.close()
         process.waitUntilExit()
 
